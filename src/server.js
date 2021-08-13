@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import { json, urlencoded } from "body-parser";
 import morgan from "morgan";
-import dotenv from "dotenv";
 import { port } from "./config/port";
 import { connect } from "./config/db";
 import itemRouter from "./resources/item/item.router";
@@ -15,12 +14,6 @@ app.use(cors());
 app.use(json());
 app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
-
-app.use("/", (req, res) => {
-  res.status(200).json({
-    message: "Hello from the server",
-  });
-});
 
 app.use("/api/item", itemRouter);
 
