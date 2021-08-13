@@ -5,6 +5,7 @@ import morgan from "morgan";
 import { port } from "./config/port";
 import { connect } from "./config/db";
 import itemRouter from "./resources/item/item.router";
+import listRouter from "./resources/list/list.router";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(morgan("dev"));
 app.use(urlencoded({ extended: true }));
 
 app.use("/api/item", itemRouter);
+app.use("/api/list", listRouter);
 
 export const start = async () => {
   try {
