@@ -12,9 +12,12 @@ app.disable("x-powered-by");
 
 app.use(cors());
 app.use(json());
-app.use(urlencoded({ extended: true }));
 app.use(morgan("dev"));
+app.use(urlencoded({ extended: true }));
 
+app.use("/", (req, res) => {
+  res.send({ message: "hello from the server" });
+});
 app.use("/api/item", itemRouter);
 
 export const start = async () => {
