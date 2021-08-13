@@ -1,4 +1,4 @@
-export const getOne = (model = async (req, res) => {
+export const getOne = (model) => async (req, res) => {
   try {
     const doc = await model
       .findOne({
@@ -15,9 +15,9 @@ export const getOne = (model = async (req, res) => {
     res.status(404).end();
     console.log(err);
   }
-});
+};
 
-export const getMany = (model = async (req, res) => {
+export const getMany = (model) => async (req, res) => {
   try {
     const docs = await model
       .find({
@@ -33,9 +33,9 @@ export const getMany = (model = async (req, res) => {
     res.status(404).end();
     console.log(error);
   }
-});
+};
 
-export const createOne = (model = async (req, res) => {
+export const createOne = (model) => async (req, res) => {
   try {
     const createdBy = req.user._id;
     const doc = await model
@@ -50,9 +50,9 @@ export const createOne = (model = async (req, res) => {
     console.log(error);
     res.status(404).end();
   }
-});
+};
 
-export const updateOne = (model = async (req, res) => {
+export const updateOne = (model) => async (req, res) => {
   try {
     const doc = await model
       .findOneAndUpdate(
@@ -72,9 +72,9 @@ export const updateOne = (model = async (req, res) => {
     console.log(error);
     res.status(404).end();
   }
-});
+};
 
-export const removeOne = (model = async (req, res) => {
+export const removeOne = (model) => async (req, res) => {
   try {
     const doc = await model
       .findOneAndRemove({
@@ -91,7 +91,7 @@ export const removeOne = (model = async (req, res) => {
     console.log(error);
     res.status(404).end();
   }
-});
+};
 
 export const crudControllers = (model) => ({
   getOne: getOne(model),
