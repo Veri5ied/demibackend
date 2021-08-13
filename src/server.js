@@ -8,16 +8,19 @@ import { connect } from "./config/db";
 import itemRouter from "./resources/item/item.router";
 
 const app = express();
-dotenv.config();
 
 app.disable("x-powered-by");
 
 app.use(cors());
 app.use(json());
-app.use(morgan("dev"));
 app.use(urlencoded({ extended: true }));
+app.use(morgan("dev"));
 
-app.use("/api/item", itemRouter);
+app.use("/", (req, res) => {
+  res.status(200).json({
+    message: "Hello from the server",
+  });
+});
 
 export const start = async () => {
   try {
