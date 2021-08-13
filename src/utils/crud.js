@@ -36,8 +36,8 @@ export const getMany = (model) => async (req, res) => {
 };
 
 export const createOne = (model) => async (req, res) => {
+  const createdBy = req.user._id;
   try {
-    const createdBy = req.user._id;
     const doc = await model
       .create({
         ...req.body,
