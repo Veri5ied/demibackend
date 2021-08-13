@@ -22,6 +22,8 @@ app.use("/", (req, res) => {
   });
 });
 
+app.use("/api/item", itemRouter);
+
 export const start = async () => {
   try {
     await connect();
